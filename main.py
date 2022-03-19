@@ -23,22 +23,22 @@ cali = json.load(f)
 texas = json.load(s)
 
 for i, j in zip(cali, texas ):
-    with open ('USCLAHOME.csv', 'a') as cali:
-        cali.write(i["HomeTeam"]) and cali.write("\n")
-    with open ('USCLAAWAY.csv', 'a') as cali:
-        cali.write(i["AwayTeam"]) and cali.write("\n")
-    with open ('TXHOME.csv', 'a') as tex:
-        tex.write(j["HomeTeam"]) and tex.write("\n")
+    # with open ('USCLAHOME.csv', 'a') as cali:
+    #     cali.write(i["HomeTeam"]) and cali.write("\n")
+    # with open ('USCLAAWAY.csv', 'a') as cali:
+    #     cali.write(i["AwayTeam"]) and cali.write("\n")
+    # with open ('TXHOME.csv', 'a') as tex:
+    #     tex.write(j["HomeTeam"]) and tex.write("\n")
     # with open ('TXAWAY.csv', 'a') as tex:
         # fieldnames = ["TXHOME", "TXAWAY"]
         # writer = csv.DictWriter(tex, fieldnames=fieldnames)
         # writer.writeheader()
         # writer.writerow(i["HomeTeam"])
         # tex.write(j["AwayTeam"]) and tex.write("\n")
-    # with open ('UCLAID.csv', 'a') as cali:
-    #     cali.write(str(i["Stadium"])) and cali.write("\n")    
-    # with open ('TXID.csv', 'a') as tex:
-    #     tex.write(str(j["Stadium"])) and tex.write("\n")   
+    with open ('UCLAID.csv', 'a') as cali:
+        cali.write(str(i["Stadium"])) and cali.write("\n")    
+    with open ('TXID.csv', 'a') as tex:
+        tex.write(str(j["Stadium"]["City"])) and tex.write("\n")   
 
 
 
