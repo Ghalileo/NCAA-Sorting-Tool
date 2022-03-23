@@ -22,6 +22,9 @@ s = open ('TX.json')
 cali = json.load(f)
 texas = json.load(s)
 
+cali_df = pd.read_json('CA.json')
+tex_df = pd.read_json('TX.json')
+
 with open ('sample.csv', 'w', newline="") as tex:
     fieldnames = ["TXHOME", "TXAWAY","UCLAHOME","UCLAAWAY"]
     writer = csv.DictWriter(tex, fieldnames=fieldnames)
