@@ -23,11 +23,19 @@ s = open ('TX.json')
 cali = json.load(f)
 texas = json.load(s)
 
+<<<<<<< HEAD
 # Creates file to post response data 
 with open ('res.csv', 'w', newline="") as tex:
 # Creates headers for CSV file
     fieldnames = ["TXHOME", "TXAWAY", "TXLOCATION", "UCLAHOME","UCLAAWAY","UCLALOCATION"]
 # Posts CSV file to header
+=======
+cali_df = pd.read_json('CA.json')
+tex_df = pd.read_json('TX.json')
+
+with open ('sample.csv', 'w', newline="") as tex:
+    fieldnames = ["TXHOME", "TXAWAY","UCLAHOME","UCLAAWAY"]
+>>>>>>> 2ca3ff18e85a594086769f2618f2c3f8a527ce31
     writer = csv.DictWriter(tex, fieldnames=fieldnames)
 # Initiates function
     writer.writeheader()
