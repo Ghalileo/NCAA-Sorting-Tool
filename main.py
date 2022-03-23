@@ -14,53 +14,38 @@ import csv
 # teams = list(col.columns)
 
 # print(teams)
+
 # Access to Json Data
 f = open('CA.json')
 s = open ('TX.json')
 
-
+# Covert json to python readible
 cali = json.load(f)
 texas = json.load(s)
 
-with open ('sample.csv', 'w', newline="") as tex:
-    fieldnames = ["TXHOME", "TXAWAY","UCLAHOME","UCLAAWAY"]
+# Creates file to post response data 
+with open ('res.csv', 'w', newline="") as tex:
+# Creates headers for CSV file
+    fieldnames = ["TXHOME", "TXAWAY", "TXLOCATION", "UCLAHOME","UCLAAWAY","UCLALOCATION"]
+# Posts CSV file to header
     writer = csv.DictWriter(tex, fieldnames=fieldnames)
+# Initiates function
     writer.writeheader()
+# For loop to prepare the data from JSON to post to CSV file
     for i, j in zip(texas, cali):
-        writer.writerow({'TXHOME': i['HomeTeam'], 'TXAWAY': i['AwayTeam'],'UCLAHOME': j['HomeTeam'], 'UCLAAWAY': j['AwayTeam']})
-        if i["HomeTeam"] == j["HomeTeam"] or i["HomeTeam"] == j["AwayTeam"]:
-           with open('Matches.txt', 'a') as match:
-            match.write(i) and match.write("\t Matches \n")
-        else: 
-            print("no matches")
-
-
-        # writer.writerow({'TXHOME': i['HomeTeam'], 'TXAWAY': i['AwayTeam'],'UCLAHOME': j['HomeTeam'], 'UCLAAWAY': j['AwayTeam']})
-        
-
-# for i, j in zip(cali, texas ):
-    # with open ('USCLAHOME.csv', 'a') as cali:
-    #     cali.write(i["HomeTeam"]) and cali.write("\n")
-    # with open ('USCLAAWAY.csv', 'a') as cali:
-    #     cali.write(i["AwayTeam"]) and cali.write("\n")
-    # with open ('TXHOME.csv', 'a') as tex:
-    #     tex.write(j["HomeTeam"]) and tex.write("\n")
-    # with open ('UCLAID.csv', 'a') as cali:
-    #     cali.write(str(i["Stadium"])) and cali.write("\n")    
-    # with open ('TXID.csv', 'a') as tex:
-    #     tex.write(str(j["Stadium"]["City"])) and tex.write("\n")   
-        # writer.writerow(i["HomeTeam"])
-        # tex.write(j["AwayTeam"]) and tex.write("\n")
-    
-
+# Writes data to CSV
+        writer.writerow({'TXHOME': i['HomeTeam'], 'TXAWAY': i['AwayTeam'], 'TXLOCATION': str(i['Stadium']['City']),'UCLAHOME': j['HomeTeam'], 'UCLAAWAY': j['AwayTeam'], 'UCLALOCATION': str(j["Stadium"]["City"])})
+        # if i["HomeTeam"] == j["HomeTeam"] or i["HomeTeam"] == j["AwayTeam"]:
+        #    with open('Matches.txt', 'a') as match:
+        #     match.write(i) and match.write("\t Matches \n")
+        # else: 
+        #     print("no matches")
 
 
 # file_path = str(input('Enter File Path: '))
 # domain_CSV = pandas.read_csv((file_path))
 
 # Urls = domain_CSV['Teams'].tolist()
-
-
 
 # for i in range (url=url):
 #     parameters = {'apikey': API_key, 'resource': i}
