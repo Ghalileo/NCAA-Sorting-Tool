@@ -48,6 +48,9 @@ for i,tx_home in enumerate(data_df['TXHOME'].to_list()):
                 print('no match')
     else:
         tmp.append('')
+
+
+
 workbook = openpyxl.load_workbook('test.xlsx')
 worksheet = workbook['Sheet1']
 tmp1=data_df['TXHOME_TO_UCLAAWAY_HITS'].to_list()
@@ -56,9 +59,11 @@ tmp3=data_df['TXAWAY_TO_UCLAHOME_HITS'].to_list()
 tmp4=data_df['TXHOME_TO_UCLAHOME_HITS'].to_list()
 cnt=0
 for a,b,c,d in zip(tmp1,tmp2,tmp3,tmp4):
+    print(a,b,c,d)
     if a != '':
+        print('fuckin',a)
         col = 'A'
-        row = cnt+1
+        row = cnt+2
         row = str(row)
         val = a
         placement=col+row
@@ -67,8 +72,9 @@ for a,b,c,d in zip(tmp1,tmp2,tmp3,tmp4):
 
         
     if b != '':
+        print('fuckin',b)
         col = 'B'
-        row = cnt+1
+        row = cnt+2
         row = str(row)
         val = b
         placement=col+row
@@ -77,8 +83,9 @@ for a,b,c,d in zip(tmp1,tmp2,tmp3,tmp4):
 
         
     if c != '':
+        print('fuckin',c)
         col = 'C'
-        row = cnt+1
+        row = cnt+2
         row = str(row)
         val = c
         placement=col+row
@@ -87,8 +94,9 @@ for a,b,c,d in zip(tmp1,tmp2,tmp3,tmp4):
 
         
     if d != '':
+        print('fuckin',d)
         col='D'
-        row = cnt+1
+        row = cnt+2
         row = str(row)
         val = d
         placement=col+row
@@ -96,10 +104,8 @@ for a,b,c,d in zip(tmp1,tmp2,tmp3,tmp4):
         worksheet[placement].font = Font(color='FF0000',bold=True)
     
     cnt+=1
+workbook.save(filename='font_test2.xlsx')      
 
-workbook.save(filename='font_test.xlsx')      
-
-col = openpyxl.utils.get_column_letter('TXAWAY_TO_UCLAHOME_HITS')
 
 tmp=[]
 for row in worksheet['TXAWAY_TO_UCLAHOME_HITS']:
