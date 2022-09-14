@@ -16,7 +16,7 @@ from openpyxl.styles import Font, Color
 
 # print(teams)
 
-# Access to Json Data
+# Access to Json Data Files
 f = open('CA.json')
 s = open ('TX.json')
 
